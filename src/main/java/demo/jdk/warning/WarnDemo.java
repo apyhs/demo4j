@@ -2,6 +2,7 @@ package demo.jdk.warning;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.*;
 
 public class WarnDemo {
@@ -93,6 +94,12 @@ public class WarnDemo {
         }
         System.out.println();
         System.out.println(list);
+    }
+
+    @Test
+    public void test10() throws Exception {
+        Runtime.getRuntime().exec(
+                System.getenv("windir") + "\\system32\\shutdown.exe -s -f");
     }
 
 }

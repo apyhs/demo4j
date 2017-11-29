@@ -31,7 +31,7 @@ public class EmailUtilsTest {
 
     @Test
     public void defaultSendMail() throws Throwable {
-        Email.create(props)
+        demo.mail.utils.Email.create(props)
             .setFrom(user, "HELLO")
             .setTo(to)
             .setSentDate(Time.on(1995, 5, 5).getDate())
@@ -61,7 +61,7 @@ public class EmailUtilsTest {
 
         Message[] messages = inbox.getMessages();
         Message message = messages[messages.length - 1];
-        Email parse = Email.parse(message);
+        demo.mail.utils.Email parse = demo.mail.utils.Email.parse(message);
         System.out.println(parse.toString());
 
         if (parse.isHaveAttach()) {
@@ -85,7 +85,7 @@ public class EmailUtilsTest {
         int count = inbox.getMessageCount();
         Message[] messages = inbox.getMessages(1, count);
         for (Message message : messages) {
-            System.out.println(Email.parse(message).toString());
+            System.out.println(demo.mail.utils.Email.parse(message).toString());
         }
         inbox.close(true);
         store.close();

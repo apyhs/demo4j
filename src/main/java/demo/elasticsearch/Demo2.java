@@ -52,12 +52,12 @@ public class Demo2 {
     @Before
     public void init() throws Exception {
         Settings settings = Settings.builder()
-                .put("cluster.name", "my-application") // 指定集群名称
-                .put("client.transport.sniff", true) // 启动嗅探功能
+                .put("cluster.name", "QIN") // 指定集群名称
+                //.put("client.transport.sniff", true) // 启动嗅探功能
                 .build();
         // 创建client
         client = new PreBuiltTransportClient(settings)
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
+                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("114.67.232.225"), 9300));
 
         // 查看集群信息
         List<DiscoveryNode> connectedNodes = client.connectedNodes();
