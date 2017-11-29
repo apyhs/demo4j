@@ -1,5 +1,6 @@
 package demo._common.other;
 
+import demo.quartz.TaskDemo;
 import org.junit.Test;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
@@ -7,7 +8,6 @@ import org.quartz.Scheduler;
 import org.quartz.TriggerKey;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.triggers.SimpleTriggerImpl;
-import demo.quartz.TaskDemo;
 
 import java.util.Date;
 

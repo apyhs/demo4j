@@ -108,6 +108,7 @@ public class InetLocation {
 	}
 
 	public InetLocation(String ip, File dbPath, String lang) throws IOException, GeoIp2Exception{
+		// http://dev.maxmind.com/geoip/geoip2/geolite2/
 		this.ip = InetAddress.getByName(ip);
 		this.dbPath = dbPath;
 		this.lang = lang;

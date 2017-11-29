@@ -1,4 +1,4 @@
-package demo._common.mail;
+package demo.mail.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,6 +8,9 @@ import javax.mail.internet.MimeUtility;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * @author Kahle
+ */
 public class EmailUtils {
 
     public static String toString(Address address) {

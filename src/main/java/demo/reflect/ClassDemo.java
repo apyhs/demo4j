@@ -24,7 +24,7 @@ public class ClassDemo {
 		long all = 0;
 		for (int i = 0; i < 1000000; i++) {
 			long start = System.currentTimeMillis();
-			Class<?> clz = Class.forName("caster.demo.code.reflect.User");
+			Class<?> clz = Class.forName("demo.reflect.User");
 			Object obj = clz.newInstance();
 			Method method = clz.getMethod("setName", String.class);
 			@SuppressWarnings("unused")

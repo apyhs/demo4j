@@ -1,4 +1,4 @@
-package demo._common.mail;
+package demo.mail.utils;
 
 import demo._common.Http;
 import demo._common.Time;
@@ -19,7 +19,7 @@ public class EmailUtilsTest {
     private String user = "123@foxmail.com";
     private String password = "password";
     private String to = "abc@163.com";
-    private demo._common.mail.Email.Props props = demo._common.mail.Email.Props
+    private Props props = Props
             .create(user, password)
             .setSmtpHost("smtp.qq.com")
             .setSmtpPort(465)
@@ -31,7 +31,7 @@ public class EmailUtilsTest {
 
     @Test
     public void defaultSendMail() throws Throwable {
-        demo._common.mail.Email.create(props)
+        Email.create(props)
             .setFrom(user, "HELLO")
             .setTo(to)
             .setSentDate(Time.on(1995, 5, 5).getDate())
@@ -61,7 +61,7 @@ public class EmailUtilsTest {
 
         Message[] messages = inbox.getMessages();
         Message message = messages[messages.length - 1];
-        demo._common.mail.Email parse = demo._common.mail.Email.parse(message);
+        Email parse = Email.parse(message);
         System.out.println(parse.toString());
 
         if (parse.isHaveAttach()) {
@@ -85,7 +85,7 @@ public class EmailUtilsTest {
         int count = inbox.getMessageCount();
         Message[] messages = inbox.getMessages(1, count);
         for (Message message : messages) {
-            System.out.println(demo._common.mail.Email.parse(message).toString());
+            System.out.println(Email.parse(message).toString());
         }
         inbox.close(true);
         store.close();

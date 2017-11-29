@@ -1,7 +1,10 @@
 package demo.jdk;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.*;
@@ -145,6 +148,22 @@ public class StringDemo {
         String[] strs = {"zz", "bb", "rr", "jds", "asdfas"};
         Arrays.sort(strs);
         System.out.println(Arrays.toString(strs));
+    }
+
+    @Test
+    public void test7() throws Exception {
+        // 问题
+        // 乱码字符：鑲栨搏娌?
+        // 处理后：  肖沫??
+        String data = "肖沫沫";
+        ByteArrayInputStream in = new ByteArrayInputStream(data.getBytes());
+        String gbk = IOUtils.toString(in, "GBK");
+        System.out.println(gbk);
+
+        System.out.println(new String(gbk.getBytes("GBK"), "utf-8"));
+        // 上面等同于下面
+//        ByteArrayInputStream inin = new ByteArrayInputStream(gbk.getBytes("GBK"));
+//        System.out.println(IOUtils.toString(inin, "utf-8"));
     }
 
 }

@@ -2,9 +2,7 @@ package demo._leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -22,25 +20,36 @@ public class TwoSum {
     public void test() {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
-        System.out.println(Arrays.toString(twoSum(nums, target)));
+        System.out.println(Arrays.toString(twoSum1(nums, target)));
     }
 
     public int[] twoSum(int[] nums, int target) {
-        List<Integer> tmp = new ArrayList<>();
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 System.out.println(i + ">>" + j);
                 if (nums[i] + nums[j] == target) {
-                    tmp.add(i);
-                    tmp.add(j);
+                    return new int[] {i, j};
                 }
             }
         }
-        int[] result = new int[tmp.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = tmp.get(i);
+        return null;
+    }
+
+    public int[] twoSum1(int[] nums, int target) {
+        int length = nums.length;
+        int index = 0;
+        int index1 = index + 1;
+        while (true) {
+            if (nums[index] + nums[index1] == target) {
+                return new int[] {index, index1};
+            }
+            else {
+                if (index1 == length -1) { index++; index1 = index + 1; }
+                else index1 ++;
+                if (index == length -1) break;
+            }
         }
-        return result;
+        return null;
     }
 
 }

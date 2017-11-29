@@ -2,8 +2,8 @@ package demo.jdbc;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.PooledDataSource;
-import org.junit.Test;
 import demo._common.ThreadUtils;
+import org.junit.Test;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

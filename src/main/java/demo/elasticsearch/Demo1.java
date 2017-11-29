@@ -1,7 +1,7 @@
 package demo.elasticsearch;
 
-import com.alibaba.fastjson.JSON;
 import demo._common.Http;
+import com.alibaba.fastjson.JSON;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
@@ -42,6 +42,5 @@ public class Demo1 {
         //关闭client
         client.close();
     }
-
 
 }
