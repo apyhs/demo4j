@@ -1,6 +1,0 @@
-[
-	{"name":"success","code":80000,"text":"success"},
-	{"name":"failure","code":80010,"text":"failure"},
-	{"name":"bad_request","code":80020,"text":"bad request"},
-	{"name":"server_error","code":89990,"text":"server error"}
-]
