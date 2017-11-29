@@ -3,7 +3,7 @@ package demo.netty;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-class HelloWorldServerHandler extends ChannelInboundHandlerAdapter {
+public class HelloWorldServerHandler extends ChannelInboundHandlerAdapter {
 	 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {

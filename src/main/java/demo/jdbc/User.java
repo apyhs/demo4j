@@ -40,6 +40,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", user_name=" + user_name + ", password=" + password + ", name=" + name + "]";
+		return "UserSmall [id=" + id + ", user_name=" + user_name + ", password=" + password + ", name=" + name + "]";
 	}
 }
