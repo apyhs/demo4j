@@ -2,9 +2,9 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>demo</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.3-beta1</version>
+	<groupId>demo</groupId>
+	<artifactId>demo</artifactId>
+    <version>0.0.3-beta2</version>
     <packaging>jar</packaging>
     <name>demo</name>
 	<description>Code demo and code draft.</description>
@@ -68,12 +68,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!--<dependency>-->
-		<!--<groupId>org.springframework</groupId>-->
-		<!--<artifactId>spring-aspects</artifactId>-->
-		<!--<version>${spring.version}</version>-->
-		<!--<scope>provided</scope>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!--<dependency>-->
 		<!--<groupId>org.springframework</groupId>-->
@@ -293,14 +293,14 @@
 		<!-- apache httpclient -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.6</version>
+			<artifactId>httpasyncclient</artifactId>
+			<version>4.1.2</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
+			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
 			<scope>provided</scope>
 		</dependency>
@@ -308,7 +308,21 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore-nio</artifactId>
 			<version>4.4.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.3</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- //////////////// -->
@@ -400,6 +414,13 @@
 		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
+			<version>3.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>enjoy</artifactId>
 			<version>3.2</version>
 			<scope>provided</scope>
 		</dependency>
@@ -617,6 +638,7 @@
 		</dependency>
 		<!-- /////////////////////////////// -->
 
+		<!-- ////       Webmagic        ///// -->
 		<dependency>
 			<groupId>us.codecraft</groupId>
 			<artifactId>webmagic-core</artifactId>
@@ -636,6 +658,12 @@
 			<artifactId>webmagic-selenium</artifactId>
 			<version>0.7.2</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.detro</groupId>
+					<artifactId>phantomjsdriver</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -644,6 +672,21 @@
 			<version>3.4.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.4.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- /////////////////////////////// -->
 
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
@@ -670,7 +713,17 @@
 			<groupId>dnsjava</groupId>
 			<artifactId>dnsjava</artifactId>
 			<version>2.1.7</version>
+			<scope>provided</scope>
 		</dependency>
+
+		<!-- ////       HtmlUnit        ///// -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.23</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- /////////////////////////////// -->
 
 	</dependencies>
 
