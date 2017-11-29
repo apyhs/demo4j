@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Random;
 
-public class Captcha {
+public class StringCaptcha {
 	private static final String[] RANDOM_FONT = new String[] {"nyala", "Arial", "Bell MT", "Credit valley", "Impact", "Monospaced"};
 	private int width = 120;
 	private int height = 30;
@@ -19,17 +19,17 @@ public class Captcha {
 	private String captchaString = null;
 	private BufferedImage image = null;
 
-	public Captcha() {
+	public StringCaptcha() {
 		this.create();
 	}
 
-	public Captcha(int width, int height) {
+	public StringCaptcha(int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.create();
 	}
 
-	public Captcha(int width, int height, int codeCount, int lineCount) {
+	public StringCaptcha(int width, int height, int codeCount, int lineCount) {
 		this.width = width;
 		this.height = height;
 		this.charCount = codeCount;
@@ -37,7 +37,7 @@ public class Captcha {
 		this.create();
 	}
 
-	public Captcha(int width, int height, int codeCount, int lineCount, String captchaSequence) {
+	public StringCaptcha(int width, int height, int codeCount, int lineCount, String captchaSequence) {
 		this.width = width;
 		this.height = height;
 		this.charCount = codeCount;

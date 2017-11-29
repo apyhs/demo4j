@@ -1,87 +1,96 @@
 package demo;
 
-import java.lang.reflect.Method;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * coding kit
+ */
 public class CodeKit {
+    private static String defaultCharsetName = Charset.defaultCharset().name();
 
-    public static String encodeBase64(byte[] input) {
-        try {
-            Class clazz = Class.forName("com.sun.org.apache.xerces.internal.impl.dv.util.Base64");
-            Method encode = clazz.getMethod("encode", byte[].class);
-            encode.setAccessible(true);
-            Object object = encode.invoke(null, new Object[]{input});
-            return (String) object;
-        }catch (Exception e){ throw new RuntimeException(e); }
+    public static void setDefCharsetName(String charset){
+        if (StrKit.isBlank(charset)) {
+            throw new IllegalArgumentException("charset name can not be blank!");
+        } defaultCharsetName = charset;
     }
 
-    public static byte[] decodeBase64(String input) {
-        try {
-            Class clazz = Class.forName("com.sun.org.apache.xerces.internal.impl.dv.util.Base64");
-            Method decode = clazz.getMethod("decode", String.class);
-            decode.setAccessible(true);
-            Object object = decode.invoke(null, input);
-            return (byte[]) object;
-        }catch (Exception e){ throw new RuntimeException(e); }
+    //----
+    public static String encodeUrl(String data) {
+        return encodeUrl(data, defaultCharsetName);
     }
 
-    public static String string2Unicode(String string) {
-        StringBuffer unicode = new StringBuffer();
+    public static String encodeUrl(String data, String charset) {
+        try { return URLEncoder.encode(data, charset); }
+        catch (Exception e) { throw new RuntimeException(e); }
+    }
+
+    public static String decodeUrl(String data) {
+        return decodeUrl(data, defaultCharsetName);
+    }
+
+    public static String decodeUrl(String data, String charset) {
+        try { return URLDecoder.decode(data, charset); }
+        catch (Exception e) { throw new RuntimeException(e); }
+    }
+
+    //----
+    public static String encodeUnicode(String string) {
+        StringBuilder unicode = new StringBuilder();
         char[] chars = string.toCharArray();
         for (char c : chars)
             unicode.append("\\u" + Integer.toHexString(c));
         return unicode.toString();
     }
 
-    public static String unicode2String(String unicode) {
-        StringBuffer string = new StringBuffer();
+    public static String decodeUnicode(String unicode) {
+        StringBuilder result = new StringBuilder();
         String[] hex = unicode.split("\\\\u");
         for (int i = 1; i < hex.length; i++)
-            string.append((char)Integer.parseInt(hex[i], 16));
-        return string.toString();
+            result.append((char)Integer.parseInt(hex[i], 16));
+        return result.toString();
     }
 
-    private static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-    public static String encodeHex(byte[] data) {
-        return new String(CodeKit.encodeHex0(data));
+    //----
+    public static <K, V> String encodeMap(Map<K, V> map) {
+        return encodeMap(map, "=", "&");
     }
 
-    private static char[] encodeHex0(byte[] data) {
-        int len = data.length;
-        char[] out = new char[len << 1];
-        // two characters form the hex0 value.
-        for (int i = 0, j = 0; i < len; i++) {
-            out[j++] = HEX_DIGITS[(0xF0 & data[i]) >>> 4];
-            out[j++] = HEX_DIGITS[0x0F & data[i]];
-        } return out;
-    }
-    
-    public static byte[] decodeHex(String data) {
-    	return decodeHex0(data.toCharArray());
+    public static Map<String, String> decodeMap(String data){
+        return decodeMap(data, "=", "&");
     }
 
-    private static byte[] decodeHex0(char[] data) {
-        try {
-			int len = data.length;
-			if ((len & 0x01) != 0) {
-			    throw new RuntimeException("odd number of characters!");
-			}
-			byte[] out = new byte[len >> 1];
-			// two characters form the hex0 value.
-			for (int i = 0, j = 0; j < len; i++) {
-			    int f = toDigit(data[j], j) << 4; j++;
-			    f = f | toDigit(data[j], j); j++;
-			    out[i] = (byte) (f & 0xFF);
-			} return out;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+    public static <K, V> String encodeMap(Map<K, V> map, String keySeparator, String valueSeparator) {
+        StringBuilder builder = new StringBuilder();
+        Set<Map.Entry<K, V>> entries = map.entrySet();
+        if (entries.size() > 0) {
+            for (Map.Entry entry : entries) {
+                builder.append(entry.getKey());
+                builder.append(keySeparator);
+                builder.append(entry.getValue());
+                builder.append(valueSeparator);
+            } int len = builder.length();
+            int valLen = valueSeparator.length();
+            builder.delete(len - valLen, len);
+        } return builder.toString();
     }
 
-    private static int toDigit(char ch, int index) {
-        int digit = Character.digit(ch, 16);
-        if (digit == -1) {
-            throw new RuntimeException("Illegal hexadecimal character!");
-        }  return digit;
+    public static Map<String, String> decodeMap(String data, String keySeparator, String valueSeparator) {
+        Map<String, String> result = new HashMap<>();
+        String[] split = data.split(valueSeparator);
+        if (split.length > 0) {
+            for (String s : split) {
+                String[] entry = s.split(keySeparator);
+                if (entry.length == 2) {
+                    result.put(entry[0], entry[1]);
+                }
+            }
+        } return result;
     }
+
+    //----
 }

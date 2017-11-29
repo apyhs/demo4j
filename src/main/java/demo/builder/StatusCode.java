@@ -60,7 +60,7 @@ public class StatusCode {
 			if(!target.exists() && !target.createNewFile()){
 				throw new RuntimeException("create target java file failure!");
 			}
-			FileKit.write2File(result, destCharset, target, false);
+			FileKit.write2File(result, target, destCharset);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

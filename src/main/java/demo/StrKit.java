@@ -1,123 +1,85 @@
 package demo;
 
-import java.security.SecureRandom;
-import java.util.*;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
+/**
+ * string kit
+ */
 public class StrKit {
-	private static final SecureRandom random = new SecureRandom();
-	
-	/**
-	 * line separator
-	 */
 	public static final String LSEP = System.getProperty("line.separator");
-	
-	/**
-	 * Change first char to lower case
-	 */
+
 	public static String firstChToLower(String s) {
 		char firstChar = s.charAt(0);
-		if (firstChar >= 'A' && firstChar <= 'Z') {
+		if(firstChar >= 65 && firstChar <= 90) {
 			char[] arr = s.toCharArray();
-			arr[0] += ('a' - 'A');
+			arr[0] = (char)(arr[0] + 32);
 			return new String(arr);
-		}
-		return s;
+		} else { return s; }
 	}
-	
-	/**
-	 * Change first char to upper case
-	 */
+
 	public static String firstChToUpper(String s) {
 		char firstChar = s.charAt(0);
-		if (firstChar >= 'a' && firstChar <= 'z') {
+		if(firstChar >= 97 && firstChar <= 122) {
 			char[] arr = s.toCharArray();
-			arr[0] -= ('a' - 'A');
+			arr[0] = (char)(arr[0] - 32);
 			return new String(arr);
-		}
-		return s;
+		} else { return s; }
 	}
-	
-	/**
-	 * String who is blank
-	 */
+
 	public static boolean isBlank(String s) {
-		return !notBlank(s);
+		if (s == null) {
+			return true;
+		}
+		int len = s.length();
+		if (len == 0) {
+			return true;
+		}
+		for (int i = 0; i < len; i++) {
+			switch (s.charAt(i)) {
+				case ' ':
+				case '\t':
+				case '\n':
+				case '\r':
+				// case '\b':
+				// case '\f':
+					break;
+				default:
+					return false;
+			}
+		}
+		return true;
 	}
-	
-	/**
-	 * String who is not blank
-	 */
+
 	public static boolean notBlank(String s) {
-		return s != null && s.trim().length() > 0;
+		return !isBlank(s);
 	}
-	
-	/**
-	 * judge s1 equals s2
-	 */
+
 	public static boolean equals(String s1, String s2) {
-		 if(s1 != null) { return s1.equals(s2); }
-		 else if(s2 == null) { return true; }
-		 else{ return false; }
+		return s1 == null ? s2 == null : s1.equals(s2);
 	}
 
-	public static List<String> toList(String s) {
-		List<String> result = new ArrayList<>();
-		char[] chars = s.toCharArray();
-		for (char aChar : chars)
-			result.add(aChar + "");
-		return result;
+	public static String toString(Throwable t) {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		t.printStackTrace(pw); return sw.toString();
 	}
 
-	public static List<String> list(String... args) {
-		List<String> result = new ArrayList<>();
-		for (String arg : args) result.add(arg);
-		return result;
-	}
-
-	public static List<List<String>> list(List<String>... args) {
-		List<List<String>> result = new ArrayList<>();
-		for (List<String> arg : args) result.add(arg);
-		return result;
-	}
-	
-	public static void removeRepeat(List<String> list){
-		List<String> result = new ArrayList<>();
-		for (String s : list)
-			if(!result.contains(s)) result.add(s);
-		list.clear(); list.addAll(result);
+	public static boolean isRepeat(String s) {
+		int len = s.length();
+		for (int i = 0; i < len; i++) {
+			if (s.indexOf(s.charAt(i), i + 1) > 0)
+				return true;
+		} return false;
 	}
 
 	public static String removeRepeat(String s) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		char[] array = s.toCharArray();
 		for (char c : array) {
-			if(buffer.indexOf(c + "") == -1) buffer.append(c);
-		} return buffer.toString();
-	}
-
-	public static String randomSort(String s) {
-		StringBuffer result = new StringBuffer();
-		char[] array = s.toCharArray();
-		for (int i = array.length - 1; i > 0; --i) {
-			int nextInt = random.nextInt(i);
-			result.append(array[nextInt]);
-			char tmp = array[nextInt];
-			array[nextInt] = array[i];
-			array[i] = tmp;
-		} result.append(array[0]);
-		return result.toString();
-	}
-
-	public static void dictSort(List<String> list){
-		Collections.sort(list);
-	}
-
-	public static void dictSort(String[] data){
-		Arrays.sort(data);
-	}
-
-	public static String uuid() {
-		return UUID.randomUUID().toString();
+			if(result.indexOf(c + "") == -1)
+				result.append(c);
+		} return result.toString();
 	}
 
 }
