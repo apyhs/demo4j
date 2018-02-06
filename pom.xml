@@ -2,11 +2,11 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>demo</groupId>
+    <groupId>com.apyhs</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.3-beta4</version>
-    <packaging>jar</packaging>
-    <name>demo</name>
+    <version>0.0.3-beta5</version>
+    <packaging>pom</packaging>
+    <name>Demo</name>
 	<description>Code demo and code draft.</description>
 
 	<properties>
@@ -17,6 +17,33 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- ///// artoria //// -->
+		<!-- https://mvnrepository.com/artifact/com.apyhs/artoria -->
+		<dependency>
+			<groupId>com.apyhs</groupId>
+			<artifactId>artoria</artifactId>
+			<version>0.0.5-beta27</version>
+		</dependency>
+		<!-- //////////////// -->
+
+		<!-- ///// junit //// -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- //////////////// -->
+
+		<!-- ///// mockito //// -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.16</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- //////////////// -->
 
 		<!-- Spring -->
 		<dependency>
@@ -361,14 +388,6 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-		</dependency>
-		<!-- //////////////// -->
-
 		<!-- log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -696,10 +715,10 @@
 		</dependency>
 
 		<!--<dependency>-->
-			<!--<groupId>org.elasticsearch</groupId>-->
-			<!--<artifactId>elasticsearch</artifactId>-->
-			<!--<version>5.6.2</version>-->
-			<!--<scope>provided</scope>-->
+		<!--<groupId>org.elasticsearch</groupId>-->
+		<!--<artifactId>elasticsearch</artifactId>-->
+		<!--<version>5.6.2</version>-->
+		<!--<scope>provided</scope>-->
 		<!--</dependency>-->
 
 		<dependency>
@@ -728,17 +747,17 @@
 		<!-- ////       IKAnalyzer        ///// -->
 		<!-- 会自动导入 lucene 相关的包 -->
 		<!--<dependency>-->
-			<!--<groupId>org.apache.lucene</groupId>-->
-			<!--<artifactId>lucene-core</artifactId>-->
-			<!--<version>6.0.0</version>-->
-			<!--<scope>provided</scope>-->
+		<!--<groupId>org.apache.lucene</groupId>-->
+		<!--<artifactId>lucene-core</artifactId>-->
+		<!--<version>6.0.0</version>-->
+		<!--<scope>provided</scope>-->
 		<!--</dependency>-->
 
 		<!--<dependency>-->
-			<!--<groupId>com.janeluo</groupId>-->
-			<!--<artifactId>ikanalyzer</artifactId>-->
-			<!--<version>2012_u6</version>-->
-			<!--<scope>provided</scope>-->
+		<!--<groupId>com.janeluo</groupId>-->
+		<!--<artifactId>ikanalyzer</artifactId>-->
+		<!--<version>2012_u6</version>-->
+		<!--<scope>provided</scope>-->
 		<!--</dependency>-->
 		<!-- /////////////////////////////// -->
 
@@ -747,6 +766,35 @@
 			<artifactId>org.apache.oltu.oauth2.client</artifactId>
 			<version>1.0.1</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.3.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm -->
+		<dependency>
+			<groupId>com.esotericsoftware</groupId>
+			<artifactId>reflectasm</artifactId>
+			<version>1.11.0</version>
+		</dependency>
+
+		<!-- Automatic Resource Management -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.10</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- //////////////// -->
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
 		</dependency>
 
 	</dependencies>
