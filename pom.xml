@@ -2,9 +2,9 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>com.apyhs</groupId>
+    <groupId>com.github.kahlkn</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.3-beta5</version>
+    <version>0.3.5.beta</version>
     <packaging>pom</packaging>
     <name>Demo</name>
 	<description>Code demo and code draft.</description>
@@ -19,19 +19,12 @@
 	<dependencies>
 
 		<!-- ///// artoria //// -->
-		<!-- https://mvnrepository.com/artifact/com.apyhs/artoria -->
 		<dependency>
-			<groupId>com.apyhs</groupId>
+			<groupId>com.github.kahlkn</groupId>
 			<artifactId>artoria</artifactId>
-			<version>0.0.5-beta27</version>
+			<version>0.5.29.beta</version>
 		</dependency>
 		<!-- //////////////// -->
-
-		<dependency>
-			<groupId>com.apyhs</groupId>
-			<artifactId>artoria-support</artifactId>
-			<version>0.0.1-beta1</version>
-		</dependency>
 
 		<!-- ///// junit //// -->
 		<dependency>
@@ -152,25 +145,18 @@
 
 		<!-- //////////////// -->
 
-		<!-- apache commons -->
+		<!-- //// apache commons //// -->
 		<dependency>
-			<groupId>org.apache.bcel</groupId>
-			<artifactId>bcel</artifactId>
-			<version>6.0</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.2</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -185,6 +171,27 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.bcel</groupId>
+			<artifactId>bcel</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.2</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -240,13 +247,6 @@
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-email</artifactId>
-			<version>1.4</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-exec</artifactId>
 			<version>1.3</version>
 			<scope>provided</scope>
@@ -256,27 +256,6 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -319,6 +298,13 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-vfs2</artifactId>
 			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- //////////////// -->
@@ -376,7 +362,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- apache shiro -->
+		<!-- //// apache shiro //// -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-all</artifactId>
@@ -385,7 +371,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- apache activemq -->
+		<!-- //// apache activemq //// -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
@@ -394,18 +380,25 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- log -->
+		<!-- //// slf4j log //// -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.25</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.20</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.2</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -415,9 +408,60 @@
 			<version>1.2.17</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>1.7.2</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- //////////////// -->
 
-		<!-- jdbc -->
+        <!-- //// logback log //// -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-access</artifactId>
+			<version>1.2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- //////////////// -->
+
+		<!-- //// jdbc //// -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -426,7 +470,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- data source -->
+		<!-- //// data source //// -->
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -435,7 +479,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- jfinal -->
+		<!-- //// jfinal //// -->
 		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
@@ -465,7 +509,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- engine -->
+		<!-- //// engine //// -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
@@ -474,7 +518,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- json -->
+		<!-- //// json //// -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
@@ -483,13 +527,13 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- mail -->
-		<!--<dependency>-->
-		<!--<groupId>javax.mail</groupId>-->
-		<!--<artifactId>javax.mail-api</artifactId>-->
-		<!--<version>1.5.5</version>-->
-		<!--<scope>provided</scope>-->
-		<!--</dependency>-->
+		<!-- //// mail //// -->
+		<!--<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+			<scope>provided</scope>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.sun.mail</groupId>
@@ -499,7 +543,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- servlet -->
+		<!-- //// servlet //// -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -508,7 +552,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- quartz -->
+		<!-- //// task scheduling //// -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
@@ -524,7 +568,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- libphonenumber -->
+		<!-- //// libphonenumber //// -->
 		<dependency>
 			<groupId>com.googlecode.libphonenumber</groupId>
 			<artifactId>geocoder</artifactId>
@@ -554,7 +598,7 @@
 		</dependency>
 		<!-- //////////////// -->
 
-		<!-- google -->
+		<!-- //// google zxing //// -->
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>core</artifactId>
@@ -568,7 +612,9 @@
 			<version>3.2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- //////////////// -->
 
+		<!-- //// google guava //// -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -654,16 +700,16 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- ////       RSS        ///// -->
+		<!-- //// rome rss //// -->
 		<dependency>
 			<groupId>rome</groupId>
 			<artifactId>rome</artifactId>
 			<version>0.9</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- /////////////////////////////// -->
+		<!-- //////////////// -->
 
-		<!-- ////       Webmagic        ///// -->
+		<!-- //// webmagic //// -->
 		<dependency>
 			<groupId>us.codecraft</groupId>
 			<artifactId>webmagic-core</artifactId>
@@ -711,21 +757,24 @@
 			<version>1.4.01</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- /////////////////////////////// -->
+		<!-- //////////////// -->
 
+		<!-- //// bouncycastle //// -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk16</artifactId>
 			<version>1.45</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- //////////////// -->
 
-		<!--<dependency>-->
-		<!--<groupId>org.elasticsearch</groupId>-->
-		<!--<artifactId>elasticsearch</artifactId>-->
-		<!--<version>5.6.2</version>-->
-		<!--<scope>provided</scope>-->
-		<!--</dependency>-->
+		<!-- //// elasticsearch //// -->
+		<!--<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>5.6.2</version>
+			<scope>provided</scope>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.elasticsearch.client</groupId>
@@ -733,6 +782,7 @@
 			<version>5.6.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- //////////////// -->
 
 		<dependency>
 			<groupId>dnsjava</groupId>
@@ -741,14 +791,14 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- ////       HtmlUnit        ///// -->
+		<!-- //// htmlunit //// -->
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit</artifactId>
 			<version>2.23</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- /////////////////////////////// -->
+		<!-- //////////////// -->
 
 		<!-- ////       IKAnalyzer        ///// -->
 		<!-- 会自动导入 lucene 相关的包 -->
@@ -801,6 +851,38 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.9.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-core</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-vod</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>us.codecraft</groupId>
+			<artifactId>xsoup</artifactId>
+			<version>0.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.esotericsoftware</groupId>
+			<artifactId>kryo</artifactId>
+			<version>3.0.3</version>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
