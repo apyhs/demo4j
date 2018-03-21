@@ -1,4 +1,4 @@
-package com.github.kahlkn.demo._function.inetlocation;
+package com.github.kahlkn.demo._function.inet.location;
 
 import org.junit.Test;
 
