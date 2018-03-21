@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="fstart.spring.ssh.pojo.User" table="tb_user">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+
+        <property name="username" type="java.lang.String">
+            <column name="user_name" />
+        </property>
+
+        <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+    </class>
+</hibernate-mapping>

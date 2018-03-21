@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="MyWebApp" version="2.5">
+	<display-name>fstart-spring-ssm</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/drop.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/drop.html</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/drop.html</location>
+	</error-page>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>druidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name> <!-- 忽略资源 -->
+			<param-value>*.js, *.gif, *.jpg, *.bmp, *.png, *.css, *.ico, /druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>druidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+	    	<param-name>encoding</param-name>
+	    	<param-value>UTF8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>druidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		<init-param> <!-- IP白名单 (没有配置或者为空，则允许所有访问) -->
+			<param-name>allow</param-name>
+			<param-value>192.168.1.1,127.0.0.1</param-value>
+		</init-param>
+		<init-param> <!-- IP黑名单 (存在共同时，deny优先于allow) -->
+			<param-name>deny</param-name>
+			<param-value>192.168.1.200</param-value>
+		</init-param>
+		<init-param> <!-- 用户名 -->
+			<param-name>loginUsername</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param> <!-- 密码 -->
+			<param-name>loginPassword</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param> <!-- 禁用HTML页面上的“Reset All”功能 -->
+			<param-name>resetEnable</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>druidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+	    	<param-name>contextConfigLocation</param-name>
+	    	<param-value>classpath:spring/springmvc-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>
