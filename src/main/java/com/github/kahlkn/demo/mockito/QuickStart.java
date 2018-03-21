@@ -1,6 +1,6 @@
 package com.github.kahlkn.demo.mockito;
 
-import com.apyhs.artoria.util.RandomUtils;
+import com.github.kahlkn.artoria.util.RandomUtils;
 import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;

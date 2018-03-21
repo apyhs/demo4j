@@ -1,6 +1,6 @@
 package com.github.kahlkn.demo.jdk.invocation;
 
-import com.apyhs.artoria.util.ClassUtils;
+import com.github.kahlkn.artoria.util.ClassUtils;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationHandler;

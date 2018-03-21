@@ -1,6 +1,5 @@
 package com.github.kahlkn.demo.jdk.warning;
 
-import com.apyhs.demo.jdk.ClonedUser;
 import com.github.kahlkn.demo.jdk.ClonedUser;
 import org.junit.Test;
 
@@ -78,7 +77,7 @@ public class WarnDemo {
         List<String> list = new ArrayList<>();
         Collections.addAll(list, "aa", "bb", "cc", "dd", "ee", "ff", "gg");
         for (String s : list) {
-            if ("cc".equals(s)) list.remove(s);
+            if ("cc".equals(s)) { list.remove(s); }
         }
         System.out.println(list);
     }
@@ -91,7 +90,7 @@ public class WarnDemo {
         while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.print(next + ", ");
-            if ("cc".equals(next)) iterator.remove();
+            if ("cc".equals(next)) { iterator.remove(); }
         }
         System.out.println();
         System.out.println(list);

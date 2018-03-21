@@ -3,8 +3,6 @@ package com.github.kahlkn.demo.mail.utils;
 import com.github.kahlkn.artoria.net.HttpUtils;
 import com.github.kahlkn.artoria.time.DateTime;
 import org.apache.commons.mail.*;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailUtils;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 import org.junit.Test;
 
@@ -33,7 +31,7 @@ public class EmailUtilsTest {
 
     @Test
     public void defaultSendMail() throws Throwable {
-        org.apache.commons.mail.Email.create(props)
+        Email.create(props)
             .setFrom(user, "HELLO")
             .setTo(to)
             .setSentDate(DateTime.create(1995, 5, 5).getDate())
@@ -45,9 +43,9 @@ public class EmailUtilsTest {
 
     @Test
     public void defaultReceiveGetFolders() throws Throwable {
-        Session session = org.apache.commons.mail.EmailUtils.createSession(props.build());
-        Store store = org.apache.commons.mail.EmailUtils.getStore(session, user, password);
-        Folder[] list = org.apache.commons.mail.EmailUtils.getAllFolders(store);
+        Session session =  EmailUtils.createSession(props.build());
+        Store store = EmailUtils.getStore(session, user, password);
+        Folder[] list = EmailUtils.getAllFolders(store);
         for (Folder folder : list) {
             System.out.println(">>>>>>>>" + folder.getFullName() + " > " + folder.getName());
         }
@@ -57,13 +55,13 @@ public class EmailUtilsTest {
     @Test
     public void defaultReceiveMail() throws Throwable {
         // JDK1.8报错的话，自行搜索解决，是JDK问题
-        Session session = org.apache.commons.mail.EmailUtils.createSession(props.build());
-        Store store = org.apache.commons.mail.EmailUtils.getStore(session, user, password);
-        Folder inbox = org.apache.commons.mail.EmailUtils.getInbox(store);
+        Session session = EmailUtils.createSession(props.build());
+        Store store = EmailUtils.getStore(session, user, password);
+        Folder inbox = EmailUtils.getInbox(store);
 
         Message[] messages = inbox.getMessages();
         Message message = messages[messages.length - 1];
-        org.apache.commons.mail.Email parse = org.apache.commons.mail.Email.parse(message);
+         Email parse = Email.parse(message);
         System.out.println(parse.toString());
 
         if (parse.isHaveAttach()) {
@@ -81,9 +79,9 @@ public class EmailUtilsTest {
     @Test
     public void defaultReceiveGetAllMail() throws Throwable {
         // not test
-        Session session = org.apache.commons.mail.EmailUtils.createSession(props.build());
-        Store store = org.apache.commons.mail.EmailUtils.getStore(session, user, password);
-        Folder inbox = org.apache.commons.mail.EmailUtils.getInbox(store);
+        Session session = EmailUtils.createSession(props.build());
+        Store store = EmailUtils.getStore(session, user, password);
+        Folder inbox = EmailUtils.getInbox(store);
         int count = inbox.getMessageCount();
         Message[] messages = inbox.getMessages(1, count);
         for (Message message : messages) {

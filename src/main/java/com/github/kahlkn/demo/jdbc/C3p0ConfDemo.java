@@ -1,6 +1,6 @@
 package com.github.kahlkn.demo.jdbc;
 
-import com.apyhs.artoria.util.ThreadUtils;
+import com.github.kahlkn.artoria.util.ThreadUtils;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.PooledDataSource;
 import org.junit.Test;

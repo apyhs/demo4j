@@ -1,7 +1,7 @@
 package com.github.kahlkn.demo.jdk.timer;
 
 import com.github.kahlkn.artoria.time.DateTime;
-import com.apyhs.artoria.util.ThreadUtils;
+import com.github.kahlkn.artoria.util.ThreadUtils;
 
 public class TimerTaskBean extends java.util.TimerTask {
 

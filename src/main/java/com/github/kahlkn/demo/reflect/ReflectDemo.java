@@ -1,7 +1,7 @@
 package com.github.kahlkn.demo.reflect;
 
-import com.apyhs.artoria.reflect.ReflectUtils;
-import com.apyhs.artoria.util.Assert;
+import com.github.kahlkn.artoria.reflect.ReflectUtils;
+import com.github.kahlkn.artoria.util.Assert;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

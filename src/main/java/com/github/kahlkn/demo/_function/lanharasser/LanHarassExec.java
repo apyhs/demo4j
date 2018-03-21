@@ -1,8 +1,8 @@
 package com.github.kahlkn.demo._function.lanharasser;
 
-import com.apyhs.artoria.util.ArrayUtils;
-import com.apyhs.artoria.util.CollectionUtils;
-import com.apyhs.artoria.util.StringUtils;
+import com.github.kahlkn.artoria.util.ArrayUtils;
+import com.github.kahlkn.artoria.util.CollectionUtils;
+import com.github.kahlkn.artoria.util.StringUtils;
 import org.junit.Test;
 
 import java.io.IOException;

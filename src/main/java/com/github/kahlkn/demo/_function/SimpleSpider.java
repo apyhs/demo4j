@@ -1,7 +1,7 @@
 package com.github.kahlkn.demo._function;
 
 import com.github.kahlkn.artoria.net.HttpUtils;
-import com.apyhs.artoria.util.StringUtils;
+import com.github.kahlkn.artoria.util.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
