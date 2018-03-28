@@ -120,4 +120,10 @@ public class WarnDemo {
         System.out.println(list);
     }
 
+    @Test
+    public void test12() {
+        int num = Integer.MAX_VALUE;
+        System.out.println(++num);
+    }
+
 }
