@@ -3,10 +3,7 @@ package com.github.kahlkn.demo.jdk;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionsDemo {
 
