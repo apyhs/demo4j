@@ -42,7 +42,8 @@ public class Application {
                 System.out.println("URL地址不能为空！");
                 return;
             }
-            HarassSite.exec(threadNum, method, url, data);
+            // TODO
+            // HarassSite.exec(threadNum, method, url, data);
         }
     }
 

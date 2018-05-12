@@ -22,9 +22,15 @@
 		<dependency>
 			<groupId>com.github.kahlkn</groupId>
 			<artifactId>artoria</artifactId>
-			<version>0.5.29.beta</version>
+			<version>0.5.31.beta</version>
 		</dependency>
 		<!-- //////////////// -->
+
+		<dependency>
+			<groupId>com.github.kahlkn</groupId>
+			<artifactId>yui-test</artifactId>
+			<version>0.1.1.alpha</version>
+		</dependency>
 
 		<!-- ///// junit //// -->
 		<dependency>

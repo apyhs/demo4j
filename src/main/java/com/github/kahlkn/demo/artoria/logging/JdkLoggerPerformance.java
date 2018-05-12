@@ -1,7 +1,7 @@
 package com.github.kahlkn.demo.artoria.logging;
 
-import com.github.kahlkn.artoria.logging.LoggerFactory;
 import org.junit.Test;
+import org.slf4j.LoggerFactory;
 
 import java.util.logging.Logger;
 
@@ -26,7 +26,7 @@ public class JdkLoggerPerformance {
 
     @Test
     public void test2() {
-        com.github.kahlkn.artoria.logging.Logger log = LoggerFactory.getLogger(JdkLoggerPerformance.class);
+        org.slf4j.Logger log = LoggerFactory.getLogger(JdkLoggerPerformance.class);
         System.out.print("Jdk Logger1: ");
         for (int i = 0; i < count; i++) {
             long start = System.currentTimeMillis();

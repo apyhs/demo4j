@@ -17,7 +17,7 @@ public class HarassSite {
         headers.put("User-Agent", DEFAULT_USER_AGENT);
     }
 
-    public static void exec(int threadNum, final String method, final String url, final String data) {
+    public static void exec(int threadNum, final HttpUtils.Method method, final String url, final String data) {
         for (int i = 0; i < threadNum; i++) {
             new Thread(new Runnable() {
                 @Override
