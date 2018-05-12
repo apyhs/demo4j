@@ -1,12 +1,13 @@
-package com.github.kahlkn.demo.jdk;
+package com.github.kahlkn.demo._function;
 
+import com.github.kahlkn.artoria.util.Assert;
 import org.junit.Test;
 
 /**
- * 有 ABCD 四个点形成电子围栏，既在地图上有个四边形（假设是）。
- * 有个 E 表示汽车，在调用接口
+ * 有 ABCD 四个点形成电子围栏（按序），既在地图上有个四边形。
+ * 有个 E 表示汽车，知道这些点的坐标，判断汽车是否在点子围栏内部。
  */
-public class JudgeFlee {
+public class ElectronicFence {
 
     private static class Point {
         private Double x;
@@ -40,22 +41,32 @@ public class JudgeFlee {
         Point b = new Point(10d, 10d);
         Point c = new Point(10d, 0d);
         Point d = new Point(0d, 0d);
-        Point e = new Point(10d, 11d);
-        System.out.println("isInside: " + isInside(a, b, c, d, e));
+        Point e = new Point(10d, 10.001d);
+        System.out.println("isInside: " + isInside(e, a, b, c, d));
     }
 
-    public boolean isInside(Point a, Point b, Point c, Point d, Point e) {
+    public boolean isInside(Point e, Point... points) {
         // 数据的非空效验，不做了
-        Double abe = calcTriangleArea(a, b, e);
-        Double bce = calcTriangleArea(b, c, e);
-        Double cde = calcTriangleArea(c, d, e);
-        Double dae = calcTriangleArea(d, a, e);
-        Double abcd = calcTetragon(a, b, c, d);
-        return (abe + bce + cde + dae) <= abcd;
+        Double sum = 0d;
+        for (int i = 0, len = points.length; i < len; i++) {
+            Point point1 = points[i];
+            Point point2 = points[i == len - 1 ? 0 : i + 1];
+            sum += calcTriangleArea(point1, point2, e);
+        }
+        Double abcd = calcPolygonArea(points);
+        return sum <= abcd;
     }
 
-    private Double calcTetragon(Point a, Point b, Point c, Point d) {
-        return calcTriangleArea(b, d, a) + calcTriangleArea(b, d, c);
+    private Double calcPolygonArea(Point... points) {
+        Assert.state(points != null && points.length >= 3, "Points must equal or greater than 3. ");
+        Double sum = 0d;
+        Point point = points[0];
+        for (int i = 0; i < points.length - 2; i++) {
+            Point point1 = points[i + 1];
+            Point point2 = points[i + 2];
+            sum += calcTriangleArea(point1, point2, point);
+        }
+        return sum;
     }
 
     private Double calcTriangleArea(Point pa, Point pb, Point pe) {
