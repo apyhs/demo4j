@@ -1,6 +1,6 @@
 package com.github.kahlkn.demo.mail.utils;
 
-import com.github.kahlkn.artoria.time.DateTime;
+import com.github.kahlkn.artoria.time.DateUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.io.IOUtils;
@@ -481,7 +481,7 @@ public class Email {
             String bccStr = bcc.size() > 2 ? EmailUtils.toString(bcc.subList(0, 2)) + " ..." : EmailUtils.toString(bcc);
             builder.append("Bcc         : ").append(bccStr).append(SystemUtils.LINE_SEPARATOR);
         }
-        builder.append("SentDate    : ").append(DateTime.create(sentDate).toString()).append(SystemUtils.LINE_SEPARATOR);
+        builder.append("SentDate    : ").append(DateUtils.create(sentDate).toString()).append(SystemUtils.LINE_SEPARATOR);
         builder.append("Priority    : ").append(priority).append(SystemUtils.LINE_SEPARATOR);
         builder.append("Size        : ").append(size).append(" Byte").append(SystemUtils.LINE_SEPARATOR);
         builder.append("HasAttach   : ").append(isHaveAttach).append(SystemUtils.LINE_SEPARATOR);

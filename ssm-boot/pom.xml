@@ -3,10 +3,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.kahlkn</groupId>
-    <artifactId>springboot-ssm</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>demo4j-ssm-boot</artifactId>
     <version>0.0.1.beta</version>
-	<name>SpringBoot SSM</name>
+    <packaging>jar</packaging>
+    <name>SSM SpringBoot</name>
     <description>Spring MVC + Spring + Mybatis + Druid + Spring Boot</description>
 
     <parent>

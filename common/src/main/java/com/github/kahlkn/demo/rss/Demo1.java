@@ -1,6 +1,5 @@
 package com.github.kahlkn.demo.rss;
 
-import com.github.kahlkn.artoria.time.DateTime;
 import com.github.kahlkn.artoria.time.DateUtils;
 import com.sun.syndication.feed.synd.*;
 import com.sun.syndication.io.SyndFeedOutput;
@@ -26,7 +25,7 @@ public class Demo1 {
             entry = new SyndEntryImpl();
             entry.setTitle(dto.getTitle());
             entry.setLink(dto.getLink());
-            entry.setPublishedDate(DateTime.create(dto.getTime()).getDate());
+            entry.setPublishedDate(DateUtils.create(dto.getTime()).getDate());
 
             description = new SyndContentImpl();
             description.setType("text/html");

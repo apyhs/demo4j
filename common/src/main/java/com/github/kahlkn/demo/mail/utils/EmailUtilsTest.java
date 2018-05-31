@@ -1,7 +1,7 @@
 package com.github.kahlkn.demo.mail.utils;
 
 import com.github.kahlkn.artoria.net.HttpUtils;
-import com.github.kahlkn.artoria.time.DateTime;
+import com.github.kahlkn.artoria.time.DateUtils;
 import org.apache.commons.mail.*;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class EmailUtilsTest {
         Email.create(props)
             .setFrom(user, "HELLO")
             .setTo(to)
-            .setSentDate(DateTime.create(1995, 5, 5).getDate())
+            .setSentDate(DateUtils.create(1995, 5, 5).getDate())
             .setSubject("测试")
             .setHtmlContent("<html><h1>Hello, World!</h1><img src=\"" +
                     "http://uux.me/wp-content/uploads/2016/12/2016121558520aa97be57.png\" /></html>")

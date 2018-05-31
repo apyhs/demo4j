@@ -6,6 +6,7 @@ public class Student extends Person {
 
     private Integer score;
     private String email;
+    private boolean hasBlog;
 
     public Integer getScore() {
         return score;
@@ -22,6 +23,14 @@ public class Student extends Person {
     public Student setEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public boolean isHasBlog() {
+        return hasBlog;
+    }
+
+    public void setHasBlog(boolean hasBlog) {
+        this.hasBlog = hasBlog;
     }
 
     @Override
