@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.github.kahlkn.demo4j.function.logging.configuration.LogAutoConfiguration
