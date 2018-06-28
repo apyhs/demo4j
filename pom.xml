@@ -7,6 +7,7 @@
     <version>0.0.1</version>
     <packaging>pom</packaging>
     <name>Demo for Java</name>
+    <url>https://github.com/kahlkn/demo4j</url>
     <description>Code demo and code draft.</description>
 
     <properties>
