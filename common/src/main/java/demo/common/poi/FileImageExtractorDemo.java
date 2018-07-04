@@ -24,11 +24,6 @@ public class FileImageExtractorDemo implements IImageExtractor {
             imagePath = StringUtils.replace(imagePath, WORD_MEDIA, "");
         }
 
-        this.extractWithEscape(imagePath, imageData);
-    }
-
-    private void extractWithEscape( String imagePath, byte[] imageData )
-            throws IOException{
         File imageFile = new File( baseDir, imagePath );
         imageFile.getParentFile().mkdirs();
         InputStream in = null;
@@ -44,6 +39,7 @@ public class FileImageExtractorDemo implements IImageExtractor {
             IOUtils.closeQuietly( in );
             IOUtils.closeQuietly( out );
         }
+
     }
 
 }

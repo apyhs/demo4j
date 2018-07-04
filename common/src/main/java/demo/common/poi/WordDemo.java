@@ -36,9 +36,9 @@ public class WordDemo {
 
     @Test
     public void test2() throws Exception {
-        poiWord03ToHtml(new File("E:\\test.doc")
-                , new File("E:\\test2")
-                , new File("E:\\test2\\test2.html"));
+        poiWord03ToHtml(new File("E:\\TestWord.doc")
+                , new File("E:\\TestWord")
+                , new File("E:\\TestWord\\test2.html"));
     }
 
     @Test
@@ -79,26 +79,44 @@ public class WordDemo {
             @Override
             public String savePicture(byte[] content, PictureType pictureType,
                                       String suggestedName, float widthInches, float heightInches) {
+                File imageFile = new File( imageFolderFile, suggestedName );
+                imageFile.getParentFile().mkdirs();
+                InputStream in = null;
+                OutputStream out = null;
+                try
+                {
+                    in = new ByteArrayInputStream( content );
+                    out = new FileOutputStream( imageFile );
+                    IOUtils.copyLarge( in, out );
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                finally
+                {
+                    IOUtils.closeQuietly( in );
+                    IOUtils.closeQuietly( out );
+                }
                 //图片在html页面加载路径
                 return "./" + suggestedName;
             }
         });
         wordToHtmlConverter.processDocument(wordDocument);
         //获取文档中所有图片
-        List pics = wordDocument.getPicturesTable().getAllPictures();
-        if (pics != null) {
-            for (int i = 0; i < pics.size(); i++) {
-                Picture pic = (Picture) pics.get(i);
-                try {//图片保存在文件夹的路径
-                    File file = new File(imageFolderFile, pic.suggestFullFileName());
-                    file.getParentFile().mkdirs();
-                    file.createNewFile();
-                    pic.writeImageContent(new FileOutputStream(file));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        List pics = wordDocument.getPicturesTable().getAllPictures();
+//        if (pics != null) {
+//            for (int i = 0; i < pics.size(); i++) {
+//                Picture pic = (Picture) pics.get(i);
+//                try {//图片保存在文件夹的路径
+//                    File file = new File(imageFolderFile, pic.suggestFullFileName());
+//                    file.getParentFile().mkdirs();
+//                    file.createNewFile();
+//                    pic.writeImageContent(new FileOutputStream(file));
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
         //创建html页面并将文档中内容写入页面
         Document htmlDocument = wordToHtmlConverter.getDocument();
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
