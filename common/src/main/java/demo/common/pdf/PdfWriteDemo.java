@@ -1,4 +1,4 @@
-package demo.common.poi;
+package demo.common.pdf;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;

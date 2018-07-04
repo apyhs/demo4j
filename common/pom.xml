@@ -350,6 +350,27 @@
         </dependency>
         <!-- //////////////// -->
 
+        <dependency>
+            <groupId>net.sf.cssbox</groupId>
+            <artifactId>pdf2dom</artifactId>
+            <version>1.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.10</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf.tool</groupId>
+            <artifactId>xmlworker</artifactId>
+            <version>5.5.10</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- apache httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

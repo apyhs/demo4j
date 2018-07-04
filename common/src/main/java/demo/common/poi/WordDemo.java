@@ -1,13 +1,13 @@
 package demo.common.poi;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.converter.PicturesManager;
 import org.apache.poi.hwpf.converter.WordToHtmlConverter;
 import org.apache.poi.hwpf.usermodel.Picture;
 import org.apache.poi.hwpf.usermodel.PictureType;
-import org.apache.poi.xwpf.converter.core.BasicURIResolver;
-import org.apache.poi.xwpf.converter.core.FileImageExtractor;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -29,9 +29,9 @@ public class WordDemo {
 
     @Test
     public void test1() throws Exception {
-        poiWord07ToHtml(new File("E:\\test.docx")
-                , new File("E:\\test1")
-                , new File("E:\\test1\\test1.html"));
+        poiWord07ToHtml(new File("E:\\TestWord.docx")
+                , new File("E:\\TestWord")
+                , new File("E:\\TestWord\\test1.html"));
     }
 
     @Test
@@ -41,17 +41,29 @@ public class WordDemo {
                 , new File("E:\\test2\\test2.html"));
     }
 
+    @Test
+    public void test3() throws IOException {
+        String path = "E:\\TestWord\\test1.html";
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
+        String toString = IOUtils.toString(reader);
+        IOUtils.closeQuietly(reader);
+
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)));
+        writer.write(StringEscapeUtils.unescapeHtml4(toString));
+        IOUtils.closeQuietly(writer);
+    }
+
     public static void poiWord07ToHtml(File docxFile, File imageFolderFile, File outputFile)
             throws IOException {
         if (!outputFile.exists()) { outputFile.getParentFile().mkdirs(); outputFile.createNewFile(); }
-        //读取文档内容
+        // 读取文档内容
         InputStream in = new FileInputStream(docxFile);
         XWPFDocument document = new XWPFDocument(in);
 
-        //加载html页面时图片路径
-        XHTMLOptions options = XHTMLOptions.create().URIResolver( new BasicURIResolver("./"));
-        //图片保存文件夹路径
-        options.setExtractor(new FileImageExtractor(imageFolderFile));
+        // 加载html页面时图片路径
+        XHTMLOptions options = XHTMLOptions.create().URIResolver( new BasicURIResolverDemo("./"));
+        // 图片保存文件夹路径
+        options.setExtractor(new FileImageExtractorDemo(imageFolderFile));
         OutputStream out = new FileOutputStream(outputFile);
         XHTMLConverter.getInstance().convert(document, out, options);
         out.close();
