@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.converter.PicturesManager;
 import org.apache.poi.hwpf.converter.WordToHtmlConverter;
-import org.apache.poi.hwpf.usermodel.Picture;
 import org.apache.poi.hwpf.usermodel.PictureType;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
@@ -23,22 +22,21 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.List;
 
 public class WordDemo {
 
     @Test
     public void test1() throws Exception {
-        poiWord07ToHtml(new File("E:\\TestWord.docx")
+        poiWord03ToHtml(new File("E:\\TestWord.doc")
                 , new File("E:\\TestWord")
-                , new File("E:\\TestWord\\test1.html"));
+                , new File("E:\\TestWord\\test2.html"));
     }
 
     @Test
     public void test2() throws Exception {
-        poiWord03ToHtml(new File("E:\\TestWord.doc")
+        poiWord07ToHtml(new File("E:\\TestWord.docx")
                 , new File("E:\\TestWord")
-                , new File("E:\\TestWord\\test2.html"));
+                , new File("E:\\TestWord\\test1.html"));
     }
 
     @Test
@@ -51,22 +49,6 @@ public class WordDemo {
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)));
         writer.write(StringEscapeUtils.unescapeHtml4(toString));
         IOUtils.closeQuietly(writer);
-    }
-
-    public static void poiWord07ToHtml(File docxFile, File imageFolderFile, File outputFile)
-            throws IOException {
-        if (!outputFile.exists()) { outputFile.getParentFile().mkdirs(); outputFile.createNewFile(); }
-        // 读取文档内容
-        InputStream in = new FileInputStream(docxFile);
-        XWPFDocument document = new XWPFDocument(in);
-
-        // 加载html页面时图片路径
-        XHTMLOptions options = XHTMLOptions.create().URIResolver( new BasicURIResolverDemo("./"));
-        // 图片保存文件夹路径
-        options.setExtractor(new FileImageExtractorDemo(imageFolderFile));
-        OutputStream out = new FileOutputStream(outputFile);
-        XHTMLConverter.getInstance().convert(document, out, options);
-        out.close();
     }
 
     public static void poiWord03ToHtml(File docFile, File imageFolderFile, File outputFile)
@@ -134,5 +116,27 @@ public class WordDemo {
 
     }
 
+    public static void poiWord07ToHtml(File docxFile, File imageFolderFile, File outputFile)
+            throws IOException {
+        if (!outputFile.exists()) { outputFile.getParentFile().mkdirs(); outputFile.createNewFile(); }
+        // 读取文档内容
+        InputStream in = new FileInputStream(docxFile);
+        XWPFDocument document = new XWPFDocument(in);
+
+        // 加载html页面时图片路径
+        XHTMLOptions options = XHTMLOptions.create().URIResolver( new BasicURIResolverDemo("./"));
+        // 图片保存文件夹路径
+        options.setExtractor(new FileImageExtractorDemo(imageFolderFile));
+//        options.setContentHandlerFactory(new IContentHandlerFactory() {
+//            @Override
+//            public ContentHandler create(OutputStream out, Writer writer, XHTMLOptions options) {
+//                return out != null ? new SimpleContentHandlerDemo( out, options.getIndent() )
+//                        : new SimpleContentHandlerDemo( writer, options.getIndent() );
+//            }
+//        });
+        OutputStream out = new FileOutputStream(outputFile);
+        XHTMLConverter.getInstance().convert(document, out, options);
+        out.close();
+    }
 
 }

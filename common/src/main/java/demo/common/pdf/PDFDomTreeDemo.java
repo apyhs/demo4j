@@ -188,6 +188,8 @@ public class PDFDomTreeDemo extends PDFDomTree {
 
         p.appendChild(el);
         el.setAttribute("style", pstyle.toString());
+        el.setAttribute("width", width + "");
+        el.setAttribute("height", height + "");
         String imgSrc = this.config.getImageHandler().handleResource(resource);
         if (!this.disableImageData && !imgSrc.isEmpty()) {
             el.setAttribute("src", imgSrc);
