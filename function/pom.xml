@@ -27,14 +27,14 @@
         <dependency>
             <groupId>com.github.kahlkn</groupId>
             <artifactId>artoria</artifactId>
-            <version>0.5.32.beta</version>
+            <version>0.5.33.beta</version>
         </dependency>
         <!-- //////////////// -->
 
         <!-- ///// yui-test //// -->
         <dependency>
             <groupId>com.github.kahlkn</groupId>
-            <artifactId>yui-test</artifactId>
+            <artifactId>hirasawa-test</artifactId>
             <version>0.1.1.alpha</version>
         </dependency>
         <!-- //////////////// -->
