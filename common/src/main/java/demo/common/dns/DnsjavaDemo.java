@@ -15,7 +15,7 @@ public class DnsjavaDemo {
     public void test1() throws Exception {
 //        Resolver resolver = new SimpleResolver("114.114.114.114");
 //        Resolver resolver = new SimpleResolver("8.8.8.8");
-        Resolver resolver = new SimpleResolver("8.8.4.4");
+        Resolver resolver = new SimpleResolver("127.0.0.1");
 //        resolver.setPort(53);
         Lookup lookup = new Lookup("www.google.com", Type.A);
         lookup.setResolver(resolver);

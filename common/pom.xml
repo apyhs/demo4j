@@ -26,12 +26,6 @@
         </dependency>
         <!-- //////////////// -->
 
-        <dependency>
-            <groupId>com.github.kahlkn</groupId>
-            <artifactId>yui-test</artifactId>
-            <version>0.1.1.alpha</version>
-        </dependency>
-
         <!-- ///// junit //// -->
         <dependency>
             <groupId>junit</groupId>
@@ -834,7 +828,7 @@
             <groupId>dnsjava</groupId>
             <artifactId>dnsjava</artifactId>
             <version>2.1.7</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- //// htmlunit //// -->

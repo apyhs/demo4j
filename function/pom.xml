@@ -31,14 +31,6 @@
         </dependency>
         <!-- //////////////// -->
 
-        <!-- ///// yui-test //// -->
-        <dependency>
-            <groupId>com.github.kahlkn</groupId>
-            <artifactId>hirasawa-test</artifactId>
-            <version>0.1.1.alpha</version>
-        </dependency>
-        <!-- //////////////// -->
-
         <!-- ///// junit //// -->
         <dependency>
             <groupId>junit</groupId>
