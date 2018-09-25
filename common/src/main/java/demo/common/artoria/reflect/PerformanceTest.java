@@ -1,7 +1,7 @@
 package demo.common.artoria.reflect;
 
-import artoria.reflect.JdkReflecter;
 import artoria.reflect.ReflectUtils;
+import artoria.reflect.SimpleReflecter;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -20,7 +20,7 @@ public class PerformanceTest {
     public void test1() throws Exception {
         Field reflecter = ReflectUtils.findField(ReflectUtils.class, "reflecter");
         ReflectUtils.makeAccessible(reflecter);
-        reflecter.set(null, new JdkReflecter());
+        reflecter.set(null, new SimpleReflecter());
         System.out.print("ReflectUtils not cache: ");
         for (int i = 0; i < count; i++) {
             long start = System.currentTimeMillis();
@@ -35,7 +35,7 @@ public class PerformanceTest {
 
     @Test
     public void test2() throws Exception {
-        ReflectUtils.setReflecter(new JdkReflecter());
+        ReflectUtils.setReflecter(new SimpleReflecter());
         System.out.print("ReflectUtils has cache: ");
         for (int i = 0; i < count; i++) {
             long start = System.currentTimeMillis();
@@ -52,7 +52,7 @@ public class PerformanceTest {
     public void test3() throws Exception {
         Field reflecter = ReflectUtils.findField(ReflectUtils.class, "reflecter");
         ReflectUtils.makeAccessible(reflecter);
-        reflecter.set(null, new JdkReflecter());
+        reflecter.set(null, new SimpleReflecter());
         System.out.print("ReflectUtils no cache(multithreaded): ");
 
         ExecutorService pool = Executors.newFixedThreadPool(count);
@@ -84,7 +84,7 @@ public class PerformanceTest {
 
     @Test
     public void test4() throws Exception {
-        ReflectUtils.setReflecter(new JdkReflecter());
+        ReflectUtils.setReflecter(new SimpleReflecter());
         System.out.print("ReflectUtils has cache(multithreaded): ");
 
         ExecutorService pool = Executors.newFixedThreadPool(count);

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static artoria.util.Const.ENDL;
+import static artoria.common.Constants.NEWLINE;
 
 public class FastStart {
     private static Logger log = LoggerFactory.getLogger(FastStart.class);
@@ -63,24 +63,24 @@ public class FastStart {
 
     @Test
     public void test1() throws KeeperException, InterruptedException {
-        System.out.println("1. 创建 ZooKeeper 节点 (znode：zoo1，数据：myData，权限：OPEN_ACL_UNSAFE，节点类型：Persistent" + ENDL);
+        System.out.println("1. 创建 ZooKeeper 节点 (znode：zoo1，数据：myData，权限：OPEN_ACL_UNSAFE，节点类型：Persistent" + NEWLINE);
         zk.create("/zoo1", "myData".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 
         // 添加Watch
-        System.out.println("2. 查看是否创建成功：" + new String(zk.getData("/zoo1", wh, null)) + ENDL);
+        System.out.println("2. 查看是否创建成功：" + new String(zk.getData("/zoo1", wh, null)) + NEWLINE);
 
         // 前面一行我们添加了对/zoo1节点的监视，所以这里对/zoo2进行修改的时候，会触发Watch事件。
-        System.out.println("3. 修改节点数据：" + zk.setData("/zoo1", "myData1".getBytes(), -1).getVersion() + ENDL);
+        System.out.println("3. 修改节点数据：" + zk.setData("/zoo1", "myData1".getBytes(), -1).getVersion() + NEWLINE);
 
         // 这里再次进行修改，则不会触发Watch事件，这就是我们验证ZK的一个特性“一次性触发”，也就是说设置一次监视，只会对下次操作起一次作用。
         System.out.println("3-1. 再次修改节点数据：" + zk.setData("/zoo1", "myData2".getBytes(), -1));
 
-        System.out.println("4. 查看是否修改成功：" + new String(zk.getData("/zoo1", false, null)) + ENDL);
+        System.out.println("4. 查看是否修改成功：" + new String(zk.getData("/zoo1", false, null)) + NEWLINE);
 
-        System.out.println("5. 删除节点" + ENDL);
+        System.out.println("5. 删除节点" + NEWLINE);
         zk.delete("/zoo1", -1);
 
-        System.out.println("6. 查看节点是否被删除： 节点状态： [" + zk.exists("/zoo1", false) + "]" + ENDL);
+        System.out.println("6. 查看节点是否被删除： 节点状态： [" + zk.exists("/zoo1", false) + "]" + NEWLINE);
     }
 
     @Test

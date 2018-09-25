@@ -1,5 +1,8 @@
 package demo.common.elasticsearch;
 
+import artoria.net.HttpMethod;
+import artoria.net.HttpRequest;
+import artoria.net.HttpResponse;
 import artoria.net.HttpUtils;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
@@ -15,13 +18,17 @@ public class EsIkDemo {
         data.put("analyzer", "ik_smart");
 //        data.put("analyzer", "ik_max_word");
         data.put("text", "中华人民共和国国歌");
-        System.out.println(HttpUtils.create("http://localhost:9200/_analyze?pretty")
-                .setData(JSON.toJSONString(data).getBytes()).get());
+        HttpRequest request = new HttpRequest();
+        request.setUrl("http://localhost:9200/_analyze?pretty");
+        request.setMethod(HttpMethod.GET);
+        request.setBody(JSON.toJSONString(data));
+        HttpResponse response = HttpUtils.getHttpClient().execute(request);
+        System.out.println(response.getBodyAsString());
     }
 
     @Test
     public void testCreateIndex() throws Exception {
-        System.out.println(HttpUtils.create("http://localhost:9200/index?pretty").put());
+        System.out.println(HttpUtils.put("http://localhost:9200/index?pretty"));
     }
 
     @Test
@@ -37,19 +44,30 @@ public class EsIkDemo {
 
         System.out.println(JSON.toJSONString(obj));
 
-        System.out.println(HttpUtils.create("http://localhost:9200/index/fulltext/_mapping -d").setContentType("application/json")
-                .setData(JSON.toJSONString(obj).getBytes())
-                .post());
+
+        HttpRequest request = new HttpRequest();
+        request.setUrl("http://localhost:9200/index/fulltext/_mapping -d");
+        request.setMethod(HttpMethod.POST);
+        request.setBody(JSON.toJSONString(obj));
+        request.addHeader(HttpRequest.CONTENT_TYPE, "application/json");
+        HttpResponse response = HttpUtils.getHttpClient().execute(request);
+        System.out.println(response.getBodyAsString());
     }
 
     @Test
     public void test2() throws Exception {
         Map<String, Object> obj = new HashMap<>();
         obj.put("content", "美国留给伊拉克的是个烂摊子吗");
-        System.out.println(HttpUtils.create("http://localhost:9200/index/fulltext/1 -d").setContentType("application/json")
-                .setData(JSON.toJSONString(obj).getBytes())
-                .post());
-        System.out.println(HttpUtils.create("http://localhost:9200/index/fulltext/1 -d").get());
+
+        HttpRequest request = new HttpRequest();
+        request.setUrl("http://localhost:9200/index/fulltext/1 -d");
+        request.setMethod(HttpMethod.POST);
+        request.setBody(JSON.toJSONString(obj));
+        request.addHeader(HttpRequest.CONTENT_TYPE, "application/json");
+        HttpResponse response = HttpUtils.getHttpClient().execute(request);
+        System.out.println(response.getBodyAsString());
+
+        System.out.println(HttpUtils.get("http://localhost:9200/index/fulltext/1 -d"));
     }
 
 }

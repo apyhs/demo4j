@@ -1,5 +1,8 @@
 package demo.common.elasticsearch.example;
 
+import artoria.net.HttpMethod;
+import artoria.net.HttpRequest;
+import artoria.net.HttpResponse;
 import artoria.net.HttpUtils;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
@@ -21,8 +24,13 @@ public class MainDemo {
                     .setAge("2" + i)
                     .setIntro("你好呀")
                     .setInterests(ins);
-            System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/" + i + "?pretty")
-                    .setData(JSON.toJSONString(employee).getBytes()).put());
+
+            HttpRequest request = new HttpRequest();
+            request.setUrl("http://localhost:9200/megacorp/employee/" + i + "?pretty");
+            request.setMethod(HttpMethod.PUT);
+            request.setBody(JSON.toJSONString(JSON.toJSONString(employee)));
+            HttpResponse response = HttpUtils.getHttpClient().execute(request);
+            System.out.println(response.getBodyAsString());
         }
     }
 
@@ -32,13 +40,13 @@ public class MainDemo {
 //            System.out.println(Http.on("http://localhost:9200/megacorp/employee/" + i + "?pretty").get());
 //        }
 //        System.out.println(Http.on("http://localhost:9200/megacorp/employee/109?pretty").get()); // 即使状态码404，浏览器上还是能有响应的
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/34/_source?pretty").get());
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/34/_source?pretty"));
     }
 
     @Test
     public void test3() throws Exception {
 //        System.out.println(Http.on("http://localhost:9200/megacorp/employee/_search?pretty").get());
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/_search?q=realName:7&pretty&_source=realName,age").get());
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/_search?q=realName:7&pretty&_source=realName,age"));
     }
 
     @Test
@@ -58,16 +66,23 @@ public class MainDemo {
 //        Employee who = new Employee().setRealName("绿巨人").setNickName("小绿").setAge("56").setIntro("砸砸砸! ").setInterests("砸", "砸", "砸");
 //        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101/_create?pretty").setData(JSON.toJSONString(who).getBytes()).put());
 //        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101?pretty").delete());
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101?pretty").get());
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/101?pretty"));
         Employee who1 = new Employee().setRealName("愤怒的绿巨人").setNickName("小绿").setAge("58").setIntro("疯狂的砸砸砸! ").setInterests("疯狂的砸", "疯狂的砸", "疯狂的砸");
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101?version=1&pretty").setData(JSON.toJSONString(who1).getBytes()).put());
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101?pretty").get());
+
+        HttpRequest request = new HttpRequest();
+        request.setUrl("http://localhost:9200/megacorp/employee/101?version=1&pretty");
+        request.setMethod(HttpMethod.PUT);
+        request.setBody(JSON.toJSONString(JSON.toJSONString(who1)));
+        HttpResponse response = HttpUtils.getHttpClient().execute(request);
+        System.out.println(response.getBodyAsString());
+
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/101?pretty"));
     }
 
     @Test
     public void test6() throws Exception {
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/101?pretty").get());
-        System.out.println(HttpUtils.create("http://localhost:9200/megacorp/employee/_mapping?pretty").get());
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/101?pretty"));
+        System.out.println(HttpUtils.get("http://localhost:9200/megacorp/employee/_mapping?pretty"));
     }
 
 }

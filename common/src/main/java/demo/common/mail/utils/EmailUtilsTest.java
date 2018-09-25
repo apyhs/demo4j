@@ -160,7 +160,7 @@ public class EmailUtilsTest {
     @Test
     public void apacheSendImageHtmlEmail() throws Exception {
         // html中的图片以内联图片的形式展示
-        String htmlEmailTemplate = HttpUtils.create("http://uux.me/2").get();
+        String htmlEmailTemplate = HttpUtils.get("http://uux.me/2");
         URL url = new URL("http://uux.me");
         ImageHtmlEmail email = new ImageHtmlEmail();
         email.setDebug(true);

@@ -1,2 +1,2 @@
-# Demo4j-selenium
+# Demo Selenium
 Selenium code demo.

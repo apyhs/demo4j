@@ -1,2 +1,2 @@
-# Demo4j-function
+# Demo Function
 Small function demo code.

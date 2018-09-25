@@ -1,5 +1,8 @@
 package demo.common.elasticsearch;
 
+import artoria.net.HttpMethod;
+import artoria.net.HttpRequest;
+import artoria.net.HttpResponse;
 import artoria.net.HttpUtils;
 import com.alibaba.fastjson.JSON;
 import org.elasticsearch.action.get.GetResponse;
@@ -24,8 +27,12 @@ public class Demo1 {
         Map<String, Object> data = new HashMap<>();
         data.put("title", "test");
         data.put("content", "test content");
-        System.out.println(HttpUtils.create("http://localhost:9200/blog/article/1")
-                .setData(JSON.toJSONString(data).getBytes()).put());
+        HttpRequest request = new HttpRequest();
+        request.setUrl("http://localhost:9200/blog/article/1");
+        request.setMethod(HttpMethod.PUT);
+        request.setBody(JSON.toJSONString(data));
+        HttpResponse response = HttpUtils.getHttpClient().execute(request);
+        System.out.println(response.getBodyAsString());
     }
 
     @Test

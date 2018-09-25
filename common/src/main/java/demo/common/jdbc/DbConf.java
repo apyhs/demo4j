@@ -1,6 +1,6 @@
 package demo.common.jdbc;
 
-import artoria.util.PropUtils;
+import artoria.util.PropertiesUtils;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
@@ -81,7 +81,7 @@ public abstract class DbConf {
 	}
 	
 	public DbConf(File propertyfile) throws Exception {
-		Properties ps = PropUtils.create(propertyfile).getProperties();
+		Properties ps = PropertiesUtils.create(propertyfile);
 		initConf(ps.getProperty("jdbcUrl"), ps.getProperty("user"), ps.getProperty("password"), ps.getProperty("driverClass"),
 				toInt(ps.getProperty("maxPoolSize")), toInt(ps.getProperty("minPoolSize")), toInt(ps.getProperty("initialPoolSize")),
 				toInt(ps.getProperty("maxIdleTime")),toInt(ps.getProperty("acquireIncrement")));

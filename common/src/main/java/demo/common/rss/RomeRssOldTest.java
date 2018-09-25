@@ -17,7 +17,7 @@ public class RomeRssOldTest {
 
     @Test
     public void test2() throws Exception {
-        String xml = HttpUtils.create("http://uux.me/feed").get();
+        String xml = HttpUtils.get("http://uux.me/feed");
         RomeRssOld rss = RomeRssOld.on(xml, "utf-8");
         // System.out.println(rss.outputString());
         System.out.println(rss.getTitle());

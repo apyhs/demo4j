@@ -1,19 +1,21 @@
-package demo.common.artoria.converter;
+package demo.common.jdk.logging;
 
-import artoria.converter.TypeConvertUtils;
 import org.junit.Test;
 
-public class ConvertUtilsPerformance {
+import java.util.logging.Logger;
+
+public class JdkLoggerPerformance {
     private static final Integer count = 20;
-    private static final Integer loopCount = 20000;
+    private static final Integer loopCount = 100000;
 
     @Test
     public void test1() {
-        Double object = 90d;
+        Logger log = Logger.getLogger(JdkLoggerPerformance.class.getName());
+        System.out.print("Jdk Logger: ");
         for (int i = 0; i < count; i++) {
             long start = System.currentTimeMillis();
             for (int j = 0; j < loopCount; j++) {
-                TypeConvertUtils.convert(object, Integer.class);
+                log.finer("hello");
             }
             long end = System.currentTimeMillis();
             System.out.print((end - start) + " ");

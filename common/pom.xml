@@ -560,7 +560,7 @@
         <dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>jfinal</artifactId>
-            <version>3.2</version>
+            <version>3.4</version>
             <scope>provided</scope>
         </dependency>
 
@@ -912,6 +912,12 @@
             <artifactId>zookeeper</artifactId>
             <version>3.4.6</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.schwering</groupId>
+            <artifactId>irclib</artifactId>
+            <version>1.10</version>
         </dependency>
 
     </dependencies>
