@@ -25,7 +25,7 @@ public class EhcacheDemo {
 			cache.put(new Element("1", "abc"));
 			Element element = cache.get("1");
 			System.out.println(element.getObjectValue());
-			System.out.println(cache.remove("1"));;
+			System.out.println(cache.remove("1"));
 			System.out.println(cache.get("1"));
 		}
 		manager.removeCache("test");
@@ -41,7 +41,7 @@ public class EhcacheDemo {
 		cache.put(new Element("1", "abc"));
 		Element element = cache.get("1");
 		System.out.println(element.getObjectValue());
-		System.out.println(cache.remove("1"));;
+		System.out.println(cache.remove("1"));
 		System.out.println(cache.get("1"));
 	}
 

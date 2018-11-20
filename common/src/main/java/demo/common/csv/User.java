@@ -25,7 +25,7 @@ public class User {
 		return gender;
 	}
 
-	private void setGender(String gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	
