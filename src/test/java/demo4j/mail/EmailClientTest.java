@@ -1,8 +1,5 @@
 package demo4j.mail;
 
-import artoria._mail.Config;
-import artoria._mail.Email;
-import artoria._mail.EmailClient;
 import artoria.time.DateUtils;
 import org.junit.Ignore;
 import org.junit.Test;

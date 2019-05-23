@@ -21,7 +21,7 @@ import java.util.List;
  * @author Kahle
  */
 public class EmailClient {
-    private static Logger log = LoggerFactory.getLogger(artoria._mail.EmailClient.class);
+    private static Logger log = LoggerFactory.getLogger(EmailClient.class);
     private static final String EMAIL_CONFIG_NAME = "mail.properties";
     private static final String INBOX = "INBOX";
     private java.util.Properties config;

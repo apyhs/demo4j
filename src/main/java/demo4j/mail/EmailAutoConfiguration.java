@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 //@Configuration
 public class EmailAutoConfiguration implements InitializingBean, DisposableBean {
     private static final String MAIL_CLASS = "javax.mail.Message";
-    private static Logger log = LoggerFactory.getLogger(artoria._mail.EmailAutoConfiguration.class);
+    private static Logger log = LoggerFactory.getLogger(EmailAutoConfiguration.class);
 
     @Override
     public void afterPropertiesSet() throws Exception {
