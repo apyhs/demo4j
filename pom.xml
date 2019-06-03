@@ -512,6 +512,22 @@
         </dependency>
         <!-- ///// end aliyun //// -->
 
+        <!-- ///// begin redisson //// -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.10.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.10.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- ///// end redisson //// -->
+
     </dependencies>
 
     <repositories>
