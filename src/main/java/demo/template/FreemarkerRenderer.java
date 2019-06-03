@@ -1,4 +1,4 @@
-package demo4j.template;
+package demo.template;
 
 import artoria.exception.ExceptionUtils;
 import artoria.template.Renderer;

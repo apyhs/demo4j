@@ -1,4 +1,4 @@
-package demo4j.rss;
+package demo.rss;
 
 import org.junit.Test;
 

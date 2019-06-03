@@ -1,4 +1,4 @@
-package demo4j.mail;
+package demo.mail;
 
 import artoria.time.DateUtils;
 import org.junit.Ignore;

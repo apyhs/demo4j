@@ -1,4 +1,4 @@
-package demo4j.aliyun;
+package demo.aliyun;
 
 import artoria.file.FileUtils;
 import com.alibaba.fastjson.JSON;

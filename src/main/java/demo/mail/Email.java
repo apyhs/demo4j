@@ -1,4 +1,4 @@
-package demo4j.mail;
+package demo.mail;
 
 import artoria.exception.UncheckedException;
 import artoria.io.IOUtils;

@@ -1,4 +1,4 @@
-package demo4j.csv;
+package demo.csv;
 
 import artoria.beans.BeanUtils;
 import artoria.file.Table;

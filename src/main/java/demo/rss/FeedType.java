@@ -1,4 +1,4 @@
-package demo4j.rss;
+package demo.rss;
 
 /**
  * RSS or ATOM type.

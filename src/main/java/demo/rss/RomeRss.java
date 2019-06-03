@@ -1,4 +1,4 @@
-package demo4j.rss;
+package demo.rss;
 
 import artoria.util.CollectionUtils;
 import artoria.util.StringUtils;

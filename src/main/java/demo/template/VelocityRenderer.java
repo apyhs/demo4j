@@ -1,4 +1,4 @@
-package demo4j.template;
+package demo.template;
 
 import artoria.template.Renderer;
 import artoria.util.Assert;
@@ -18,7 +18,6 @@ import java.util.Properties;
 
 import static artoria.common.Constants.DEFAULT_CHARSET_NAME;
 import static org.apache.velocity.app.Velocity.*;
-import static org.apache.velocity.runtime.RuntimeConstants.*;
 
 /**
  * Velocity template renderer.

@@ -1,4 +1,4 @@
-package demo4j.codec;
+package demo.codec;
 
 /**
  * Base64 工具.
