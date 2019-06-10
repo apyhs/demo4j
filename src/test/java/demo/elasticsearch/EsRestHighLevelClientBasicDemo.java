@@ -3,6 +3,7 @@ package demo.elasticsearch;
 import artoria.io.IOUtils;
 import com.alibaba.fastjson.JSON;
 import org.apache.http.HttpHost;
+import org.apache.lucene.search.TotalHits;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -155,8 +156,8 @@ public class EsRestHighLevelClientBasicDemo {
                 , failedShards, successfulShards, totalShards, timedOut, status);
         log.info("toString={}", searchResponse.toString());
         SearchHits hits = searchResponse.getHits();
-//        TotalHits totalHits = hits.getTotalHits();
-        long totalHits = hits.getTotalHits();
+        TotalHits totalHits = hits.getTotalHits();
+//        long totalHits = hits.getTotalHits();
         float maxScore = hits.getMaxScore();
         String collapseField = hits.getCollapseField();
         log.info("totalHits={}, maxScore={}, collapseField={}", totalHits, maxScore, collapseField);
