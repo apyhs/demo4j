@@ -11,11 +11,12 @@ public class QueryWhois {
 
     @Test
     public void test() throws IOException {
-        Socket socket = new Socket("whois.cnnic.net.cn",43);
+//        Socket socket = new Socket("whois.cnnic.net.cn",43);
+        Socket socket = new Socket("whois.iana.org",43);
         System.out.println("连接到服务器了...");
         // 2、获取输出流，向服务器端发送信息
         OutputStream out = socket.getOutputStream(); // 字节输出流
-        byte[] data = ("aliyun.com\n").getBytes();
+        byte[] data = ("aliyun.cn\n").getBytes();
         out.write(data);
         out.flush();
         socket.shutdownOutput();
