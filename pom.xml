@@ -1103,6 +1103,12 @@
             <version>1.2_01</version>
         </dependency>
 
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.20</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
