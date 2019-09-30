@@ -13,6 +13,9 @@ public class GetOsInfoDemo {
     @Test
     public void test1() {
         Map<String,String> map = System.getenv();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
         System.out.println("计算机用户名"+map.get("USERNAME"));//获取用户名
         System.out.println("计算机名"+map.get("COMPUTERNAME"));//获取计算机名
         System.out.println("计算机域名"+map.get("USERDOMAIN"));//获取计算机域名

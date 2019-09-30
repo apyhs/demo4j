@@ -10,7 +10,7 @@ public class InetQuery {
 	@Test
 	public void test() throws Exception {
 		String dbPath = "e:\\GeoLite2-City.mmdb";
-		String ip = "127.0.0.1";
+		String ip = "103.88.46.145";
 		System.out.println("该IP的物理地址为：" + new InetLocation(ip, new File(dbPath), "zh-CN"));
 	}
 
